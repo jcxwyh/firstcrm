@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .margin{
+            margin:-0.4em 0em 0em 0.4em;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+        .margin-page{
+            margin:0.2em 0.5em;
+            padding:0;
+        }
+        .panel-inner-li{
+            padding-left:2.8em;
+        }
+        .list-group-item{
+            border:none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航条 -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-ice-lolly-tasted"></span>
+                    某CRM系统
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">
+
+                            首页
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li><a href="#">关于我们</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">公司介绍</a></li>
+                            <li><a href="#">使用教程</a></li>
+                            <li><a href="#">获取帮助</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">制作人员</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                        帮助文档
+                    </a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>
+                            管理员
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+                            <li><a href="#">密码修改</a></li>
+                            <li><a href="#">修改头像</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">安全退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- 搜索框 -->
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="搜索">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- 左侧菜单栏 -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-th-list"></span> 菜单
+                    </div>
+                    <!--<div class="panel-body"></div>-->
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="glyphicon glyphicon-home"></span> 首页</li>
+                        <li class="list-group-item"><span class="glyphicon glyphicon-menu-hamburger"></span> 机会管理</li>
+                        <li class="list-group-item"><span class="glyphicon glyphicon-gift"></span> 营销管理</li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-cog "></span> 系统设置 <span class="glyphicon glyphicon-menu-down pull-right dropdown-toggle cursor" data-toggle="dropdown" onclick="toggleInnerLi()"></span>
+                        </li>
+                        <li class="hidden list-group-item panel-inner-li" name="jcx">
+                            <span class="glyphicon glyphicon-user"></span> 用户管理
+                        </li>
+                        <li class="hidden list-group-item panel-inner-li" name="jcx">
+                            <span class="glyphicon glyphicon-list-alt"></span> 角色管理
+                        </li>
+                        <li class="hidden list-group-item panel-inner-li" name="jcx">
+                            <span class="glyphicon glyphicon-list"></span> 菜单管理
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">系统设置</a></li>
+                            <li class="active">角色管理</li>
+                        </ol>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                搜索条件
+                                <button class="btn btn-danger btn-sm pull-right margin"><span class="glyphicon glyphicon-remove"></span> 清楚条件</button>
+                                <button class="btn btn-primary btn-sm  pull-right margin"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+                            </div>
+                            <div class="panel-body">
+                                欢迎
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--数据表格-->
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">
+                                角色列表
+                                <button class="btn btn-danger btn-sm pull-right margin"><span class="glyphicon glyphicon-trash"></span> 删除选中</button>
+                                <button class="btn btn-primary btn-sm  pull-right margin"><span class="glyphicon glyphicon-plus"></span> 添加角色</button>
+                            </div>
+
+                            <!-- Table -->
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>编号</th>
+                                    <th>角色名称</th>
+                                    <th>唯一键</th>
+                                    <th>状态</th>
+                                    <th>描述</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Admin</td>
+                                    <td>ADMIN</td>
+                                    <td>
+                                        <span class="label label-success cursor">启用</span>
+                                    </td>
+                                    <td>管理员角色</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> 修改</button>
+                                        <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove-sign"></span> 删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>普通用户</td>
+                                    <td>USER</td>
+                                    <td>
+                                        <span class="label label-success cursor">启用</span>
+                                    </td>
+                                    <td>普通用户角色</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> 修改</button>
+                                        <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove-sign"></span> 删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>演示用户</td>
+                                    <td>DEMO</td>
+                                    <td>
+                                        <span class="label label-danger cursor">禁用</span>
+                                    </td>
+                                    <td>演示用户角色</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> 修改</button>
+                                        <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove-sign"></span> 删除</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>经理</td>
+                                    <td>MANAGER</td>
+                                    <td>
+                                        <span class="label label-success cursor">启用</span>
+                                    </td>
+                                    <td>经理角色</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> 修改</button>
+                                        <button class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-remove-sign"></span> 删除</button>
+                                    </td>
+                                </tr>
+
+                                <!-- 弹出模拟框 -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">角色信息修改</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="">
+                                                    <div class="form-group">
+                                                        <label>编号</label>
+                                                        <input type="text" name="id" class="form-control"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>角色名称</label>
+                                                        <input type="text" name="name" class="form-control"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>唯一键</label>
+                                                        <input type="text" name="id" class="form-control" readonly/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>状态</label>
+                                                        <input type="text" name="id" class="form-control"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>描述</label>
+                                                        <input type="text" name="id" class="form-control"/>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <tr>
+                                    <td colspan="6">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination margin-page">
+                                                <li class="disabled">
+                                                    <a href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">上一页</span>
+                                                    </a>
+                                                </li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li>
+                                                    <a href="#" aria-label="Next">
+                                                        <span aria-hidden="true">下一页</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function toggleInnerLi(){
+       $(".panel-inner-li").toggleClass("hidden").hover(
+           function(){
+               $(this).css({backgroundColor:"#4169FF",color:'white',cursor:'pointer'});
+           },
+           function(){
+               $(this).css({backgroundColor:"white",color:'black'});
+           }
+       );
+    }
+</script>
